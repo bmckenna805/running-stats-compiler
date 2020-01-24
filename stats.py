@@ -80,31 +80,30 @@ with open('garmin_running.csv') as csvfile:
     workouts = csv.DictReader(csvfile)
     for row in workouts:
         time = int(time_to_seconds(row["Time"]))
-        workout_type = row["Activity Type"]
         year = parse_date(row["Date"])
-        if year == 2009 and workout_type == "Running":
+        if year == 2009 and row["Activity Type"] == "Running":
             annum2009.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2010 and workout_type == "Running":
+        if year == 2010 and row["Activity Type"] == "Running":
             annum2010.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2011 and workout_type == "Running":
+        if year == 2011 and row["Activity Type"] == "Running":
             annum2011.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2012 and workout_type == "Running":
+        if year == 2012 and row["Activity Type"] == "Running":
             annum2012.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2013 and workout_type == "Running":
+        if year == 2013 and row["Activity Type"] == "Running":
             annum2013.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2014 and workout_type == "Running":
+        if year == 2014 and row["Activity Type"] == "Running":
             annum2014.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2015 and workout_type == "Running":
+        if year == 2015 and row["Activity Type"] == "Running":
             annum2015.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2016 and workout_type == "Running":
+        if year == 2016 and row["Activity Type"] == "Running":
             annum2016.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2017 and workout_type == "Running":
+        if year == 2017 and row["Activity Type"] == "Running":
             annum2017.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2018 and workout_type == "Running":
+        if year == 2018 and row["Activity Type"] == "Running":
             annum2018.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2019 and workout_type == "Running":
+        if year == 2019 and row["Activity Type"] == "Running":
             annum2019.add_run(time, float(row["Distance"]), int(row["Calories"]))
-        if year == 2020 and workout_type == "Running":
+        if year == 2020 and row["Activity Type"] == "Running":
             annum2020.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if "5k" in row["Title"]:
             add_race(row["Title"], row["Date"], row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
