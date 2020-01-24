@@ -16,10 +16,6 @@ class Year:
         if self.longest_run == '' or distance > self.longest_run:
             self.longest_run = distance
 
-    def time_formatting(self):
-        hours = i 
-        return formatted_time
-
     def print_year(self):
         print(f"Total Workouts: {self.workouts}")
         minutes, seconds = divmod(self.running_time, 60)
