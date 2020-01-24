@@ -8,7 +8,7 @@ class Year:
     total_calories = 0
     longest_run = ''
 
-    def add_run(self, pace, time, distance, calories):
+    def add_run(self, time, distance, calories):
         self.workouts = self.workouts + 1
         self.running_time = self.running_time + int(time)
         self.mileage = self.mileage + distance
@@ -79,49 +79,45 @@ races = {}
 with open('garmin_running.csv') as csvfile:
     workouts = csv.DictReader(csvfile)
     for row in workouts:
-        title = row["Title"]
-        pace = row["Avg Pace"]
         time = int(time_to_seconds(row["Time"]))
-        distance = float(row["Distance"])
-        calories = int(row["Calories"])
         workout_type = row["Activity Type"]
         date = row["Date"]
         year = parse_date(row["Date"])
         if year == 2009 and workout_type == "Running":
-            annum2009.add_run(pace, time, distance, calories)
+            annum2009.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2010 and workout_type == "Running":
-            annum2010.add_run(pace, time, distance, calories)
+            annum2010.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2011 and workout_type == "Running":
-            annum2011.add_run(pace, time, distance, calories)
+            annum2011.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2012 and workout_type == "Running":
-            annum2012.add_run(pace, time, distance, calories)
+            annum2012.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2013 and workout_type == "Running":
-            annum2013.add_run(pace, time, distance, calories)
+            annum2013.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2014 and workout_type == "Running":
-            annum2014.add_run(pace, time, distance, calories)
+            annum2014.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2015 and workout_type == "Running":
-            annum2015.add_run(pace, time, distance, calories)
+            annum2015.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2016 and workout_type == "Running":
-            annum2016.add_run(pace, time, distance, calories)
+            annum2016.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2017 and workout_type == "Running":
-            annum2017.add_run(pace, time, distance, calories)
+            annum2017.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2018 and workout_type == "Running":
-            annum2018.add_run(pace, time, distance, calories)
+            annum2018.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2019 and workout_type == "Running":
-            annum2019.add_run(pace, time, distance, calories)
+            annum2019.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if year == 2020 and workout_type == "Running":
-            annum2020.add_run(pace, time, distance, calories)
-        if "5k" in title:
-            add_race(title, date, row["Time"], pace, distance, race_number)
+            annum2020.add_run(time, float(row["Distance"]), int(row["Calories"]))
+        if "5k" in row["Title"]:
+            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
-        if "10k" in title:
-            add_race(title, date, row["Time"], pace, distance, race_number)
+        if "10k" in row["Title"]:
+            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
-        if "Half Marathon" in title or "half marathon" in title:
-            add_race(title, date, row["Time"], pace, distance, race_number)
+        if "Half Marathon" in row["Title"] or "half marathon" in row["Title"]:
+            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
-        if "Grand Blue" in title:
-            add_race(title, date, row["Time"], pace, distance, race_number)
+        if "Grand Blue" in row["Title"]:
+            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
 print_races()
 print("2009:")
