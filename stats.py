@@ -45,9 +45,10 @@ def time_to_seconds(time):
 race_number = 1 
 
 
-def add_race(title, time, pace, distance, race_number):
+def add_race(title, date, time, pace, distance, race_number):
     race = {
         "Title": title,
+        "Date": date,
         "Time": time,
         "Pace": pace,
         "Distance": distance
@@ -84,6 +85,7 @@ with open('garmin_running.csv') as csvfile:
         distance = float(row["Distance"])
         calories = int(row["Calories"])
         workout_type = row["Activity Type"]
+        date = row["Date"]
         year = parse_date(row["Date"])
         if year == 2009 and workout_type == "Running":
             annum2009.add_run(pace, time, distance, calories)
@@ -110,16 +112,16 @@ with open('garmin_running.csv') as csvfile:
         if year == 2020 and workout_type == "Running":
             annum2020.add_run(pace, time, distance, calories)
         if "5k" in title:
-            add_race(title, row["Time"], pace, distance, race_number)
+            add_race(title, date, row["Time"], pace, distance, race_number)
             race_number = race_number + 1
         if "10k" in title:
-            add_race(title, row["Time"], pace, distance, race_number)
+            add_race(title, date, row["Time"], pace, distance, race_number)
             race_number = race_number + 1
         if "Half Marathon" in title or "half marathon" in title:
-            add_race(title, row["Time"], pace, distance, race_number)
+            add_race(title, date, row["Time"], pace, distance, race_number)
             race_number = race_number + 1
         if "Grand Blue" in title:
-            add_race(title, row["Time"], pace, distance, race_number)
+            add_race(title, date, row["Time"], pace, distance, race_number)
             race_number = race_number + 1
 print_races()
 print("2009:")
