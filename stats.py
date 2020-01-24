@@ -13,12 +13,20 @@ class Year:
         self.running_time = self.running_time + int(time)
         self.mileage = self.mileage + distance
         self.total_calories = self.total_calories + calories
-        if self.longest_run != '' and distance > self.longest_run:
+        if self.longest_run == '' or distance > self.longest_run:
             self.longest_run = distance
+
+    def time_formatting(self):
+        hours = i 
+        return formatted_time
 
     def print_year(self):
         print(f"Total Workouts: {self.workouts}")
-        print(f"Total Time Running: {self.running_time}")
+        minutes, seconds = divmod(self.running_time, 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod (hours, 24 )
+        formatted_time = f"{days}:{hours}:{minutes}:{seconds}"
+        print(f"Total Time Running: {formatted_time}")
         print(f"Total Mileage: {self.mileage}")
         print(f"Total Calories Burned: {self.total_calories}")
         print(f"Longest Run: {self.longest_run}")
@@ -47,7 +55,9 @@ def add_race(title, time, pace, distance, race_number):
     races[race_number] = race
 
 def print_races():
-    print(races)
+    while races:
+        race = races.popitem()
+        print(race)
 
 
 annum2009 = Year()
