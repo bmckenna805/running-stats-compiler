@@ -81,7 +81,6 @@ with open('garmin_running.csv') as csvfile:
     for row in workouts:
         time = int(time_to_seconds(row["Time"]))
         workout_type = row["Activity Type"]
-        date = row["Date"]
         year = parse_date(row["Date"])
         if year == 2009 and workout_type == "Running":
             annum2009.add_run(time, float(row["Distance"]), int(row["Calories"]))
@@ -108,16 +107,16 @@ with open('garmin_running.csv') as csvfile:
         if year == 2020 and workout_type == "Running":
             annum2020.add_run(time, float(row["Distance"]), int(row["Calories"]))
         if "5k" in row["Title"]:
-            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
+            add_race(row["Title"], row["Date"], row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
         if "10k" in row["Title"]:
-            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
+            add_race(row["Title"], row["Date"], row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
         if "Half Marathon" in row["Title"] or "half marathon" in row["Title"]:
-            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
+            add_race(row["Title"], row["Date"], row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
         if "Grand Blue" in row["Title"]:
-            add_race(row["Title"], date, row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
+            add_race(row["Title"], row["Date"], row["Time"], row["Avg Pace"], float(row["Distance"]), race_number)
             race_number = race_number + 1
 print_races()
 print("2009:")
